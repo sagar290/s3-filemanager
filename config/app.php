@@ -186,6 +186,8 @@ return [
          * Package Service Providers...
          */
 
+        Aws\Laravel\AwsServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

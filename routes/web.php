@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UploadController;
 use App\Service\BucketService;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -14,6 +15,8 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('upload', [UploadController::class, 'index']);
 
 Route::get('/', function () {
     return Inertia::render('home');
