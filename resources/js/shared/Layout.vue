@@ -178,8 +178,7 @@
 import Nav from "./Nav";
 import {computed} from "vue";
 import {usePage} from "@inertiajs/inertia-vue3";
-import {Splitpanes, Pane} from 'splitpanes'
-import SideNav from "./SideNav.vue";
+
 
 const appUrl = computed(() => {
     return usePage().props.value.app.url
