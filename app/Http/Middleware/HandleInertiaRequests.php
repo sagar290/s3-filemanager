@@ -38,15 +38,12 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            "auth" => [
-                "user" => [
-                    "id" => 1,
-                    "name" => 'Sagar Dash',
-                    "email" => 'sagar.dash290@gmail.com',
-                ],
+            "app" => [
+                "name" => config('app.name'),
+                "env" => config('app.env'),
+                "debug" => config('app.debug'),
+                "url" => config('app.url'),
             ],
-
-            "buckets" => (new BucketService())->getBuckets(),
         ]);
     }
 }
