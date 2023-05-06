@@ -8,6 +8,7 @@
     <script src="{{ mix('/js/app.js') }}" defer></script>
     <script src="{{ mix('/js/vendor.js') }}" defer></script>
     <script src="{{ mix('/js/manifest.js') }}" defer></script>
+    <script src="https://kit.fontawesome.com/b56ea940c7.js" crossorigin="anonymous"></script>
     @inertiaHead
 </head>
 <body>

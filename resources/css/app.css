@@ -65,28 +65,28 @@ body{
 
 
 
-.carde img{
+.card img{
     text-align: -webkit-center;
     width: 80px;
 }
-.carde{
+.card{
     padding: 30px 0 0px 0px;
     border: 1px solid #dadce0;
     border-radius: 7px;
 }
 
-.carde-content{
+.card-content{
     margin: 20px 0px 10px 0px;
     border-top: 1px solid #dadce0;
     padding-left: 14px;
 }
-.folder-carde img{
+.folder-card img{
     width: 24px;
     height: 24px;
     margin-right: 20px;
     font-weight: 500;
 }
-.folder-carde{
+.folder-card{
     padding: 10px 20px 10px 20px;
     border: 1px solid #dadce0;
     border-radius: 5px;
@@ -197,6 +197,6 @@ body{
 
 }
 
-.folder-carde:hover{
+.folder-card:hover{
     background-color: #eff0f0;
 }
