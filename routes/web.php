@@ -4,7 +4,7 @@ use App\Http\Controllers\UploadController;
 use App\Service\BucketService;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use Illuminate\Support\Facades\File;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,22 +22,17 @@ Route::get('/', function () {
     return Inertia::render('home');
 });
 
-Route::get('/about', function () {
-    return Inertia::render('about');
+Route::get('images/{image}', function ($image) {
+    // get image from public/images
+    $path = public_path('images/' . $image);
+    // check if file exists
+    if (!File::exists($path)) {
+        abort(404);
+    }
+    // get file content as a resource
+    $file = File::get($path);
+    // return the image with a proper response header
+    return response($file, 200)->header("Content-Type", File::mimeType($path));
+
 });
 
-Route::get('/contact', function () {
-    return Inertia::render('contact');
-});
-
-Route::get('/blog', function () {
-    return Inertia::render('blog');
-});
-
-Route::post('/logout', function () {
-    return "Logged out";
-});
-
-Route::get('/buckets/{bucketId}', function ($bucketId) {
-    return Inertia::render('bucket', (new BucketService())->getBucket($bucketId));
-});
