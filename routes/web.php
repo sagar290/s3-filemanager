@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\UploadController;
-use App\Service\BucketService;
+use App\Service\S3Service;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\File;

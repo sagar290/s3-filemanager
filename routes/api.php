@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\S3Controller;
 use Aws\Laravel\AwsFacade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,14 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/bucketList', function () {
-
-    $s3 = AwsFacade::createClient('s3');
-
-    $buckets = $s3->listBuckets();
-
-    return response()->json([
-        'data' => $buckets->get('Buckets')
-    ]);
-
-});
+Route::get('/buckets', [S3Controller::class, 'bucketList']);
+Route::get('/buckets/{path}', [S3Controller::class, 'bucketContent'])->where('path', '.*');
