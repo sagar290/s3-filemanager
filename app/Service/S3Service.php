@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use Aws\AwsClientInterface;
 use Aws\Laravel\AwsFacade;
 use Illuminate\Support\Str;
 
@@ -9,16 +10,16 @@ class S3Service
 {
 
     protected array $buckets = [];
+    protected AwsClientInterface $s3Client;
 
     public function __construct()
     {
-
+        $this->s3Client = AwsFacade::createClient('s3');
     }
 
     public function getBuckets(): array
     {
-        $s3 = AwsFacade::createClient('s3');
-        return $s3->listBuckets()->get('Buckets');
+        return $this->s3Client->listBuckets()->get('Buckets');
     }
 
     public function getBucket($id)
@@ -51,9 +52,8 @@ class S3Service
 
     private function getBucketContentAndFolder(string $bucketName, string $path): array
     {
-        $s3 = AwsFacade::createClient('s3');
 
-        $bucket = $s3->listObjectsV2([
+        $bucket = $this->s3Client->listObjectsV2([
             'Bucket' => $bucketName,
             'Prefix' => $path,
             'Delimiter' => '/',
@@ -79,5 +79,22 @@ class S3Service
         ];
     }
 
+    public function createFolder($bucketName, $folderNameWithPath): string
+    {
+        return $this->s3Client->putObject([
+            'Bucket' => $bucketName,
+            'Key' => $folderNameWithPath,
+            'Body' => '',
+        ])->get('ObjectURL');
+
+    }
+
+    public function deleteFolder($bucketName, $folderNameWithPath)
+    {
+        return $this->s3Client->deleteObject([
+            'Bucket' => $bucketName,
+            'Key' => $folderNameWithPath,
+        ]);
+    }
 
 }
