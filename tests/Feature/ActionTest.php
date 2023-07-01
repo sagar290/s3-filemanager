@@ -43,7 +43,9 @@ class ActionTest extends TestCase
         $response = $this->post('/api/v1/actions', [
             'action' => [
                 [
-                    'name' => 'create_folder'
+                    'name' => 'create_folder',
+                    'path' => '/',
+                    'value' => 'test folder'
                 ]
             ]
         ], [
