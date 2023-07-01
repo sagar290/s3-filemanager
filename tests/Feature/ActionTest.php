@@ -25,7 +25,7 @@ class ActionTest extends TestCase
     public function test_wrong_action_name_validation()
     {
         $response = $this->post('/api/v1/actions', [
-            'action' => [
+            'actions' => [
                 [
                     'name' => 'create_folder_wrong'
                 ]
@@ -41,7 +41,7 @@ class ActionTest extends TestCase
     public function test_right_action_name_validation()
     {
         $response = $this->post('/api/v1/actions', [
-            'action' => [
+            'actions' => [
                 [
                     'name' => 'create_folder',
                     'path' => '/',
