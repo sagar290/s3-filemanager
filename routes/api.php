@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActionController;
 use App\Http\Controllers\S3Controller;
 use Aws\Laravel\AwsFacade;
 use Illuminate\Http\Request;
@@ -16,9 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group([
+    'prefix' => 'v1'
+], function () {
+    Route::get('/buckets', [S3Controller::class, 'bucketList']);
+    Route::get('/buckets/{path}', [S3Controller::class, 'bucketContent'])->where('path', '.*');
+
+
+    Route::post('/actions', [ActionController::class, 'makeAction']);
+
 });
 
-Route::get('/buckets', [S3Controller::class, 'bucketList']);
-Route::get('/buckets/{path}', [S3Controller::class, 'bucketContent'])->where('path', '.*');
