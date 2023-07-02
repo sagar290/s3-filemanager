@@ -23,7 +23,7 @@ class S3Controller extends Controller
     public function bucketContent(Request $request): BucketContentResource
     {
         return new BucketContentResource(
-            $this->s3MangerService->getContentFolderByPath($request->path)
+            $this->s3MangerService->getContentFolderByPath(normalize_path($request->path))
         );
     }
 

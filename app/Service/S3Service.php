@@ -31,15 +31,7 @@ class S3Service
     public function getContentFolderByPath(string $path): array
     {
 
-        $pathExplode = explode('/', $path);
-
-        $bucketName = $pathExplode[0];
-
-        if (count($pathExplode) > 1) {
-            $path = str_replace($bucketName . '/', '', $path) . '/';
-        } else {
-            $path = '';
-        }
+        [$bucketName, $path] = separate_bucket_and_path_from_string($path);
 
         [$folders, $contents] = $this->getBucketContentAndFolder($bucketName, $path);
 
