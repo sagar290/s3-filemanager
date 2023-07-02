@@ -34,10 +34,32 @@ if(!function_exists('separate_bucket_and_path_from_string')) {
     }
 }
 
-if ( ! function_exists('normalize_path')) {
+if (!function_exists('normalize_path')) {
     function normalize_path($path): string
     {
         $path = Str::replace("#\/+#", "/", $path);
         return Str::startsWith($path, '/') ? Str::replaceFirst('/', '', $path) : $path;
+    }
+}
+
+if (!function_exists('normalize_folder')) {
+    function normalize_folder($folder): string
+    {
+        if (!Str::endsWith($folder, '/')) {
+            $folder .= '/';
+        }
+
+        return $folder;
+    }
+}
+
+if (!function_exists('normalize_folder_path')) {
+    function normalize_folder_path($folder): string
+    {
+        if (!Str::endsWith($folder, '/')) {
+            $folder .= '/';
+        }
+
+        return $folder;
     }
 }

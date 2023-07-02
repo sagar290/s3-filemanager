@@ -8,11 +8,6 @@ use Tests\TestCase;
 
 class ActionTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
     public function test_required_validation()
     {
         $response = $this->post('/api/v1/actions', [], [
@@ -38,14 +33,14 @@ class ActionTest extends TestCase
         $response->assertStatus(422);
     }
 
-    public function test_right_action_name_validation()
+    public function test_right_action_name_with_the_name_create_folder()
     {
         $response = $this->post('/api/v1/actions', [
             'actions' => [
                 [
                     'name' => 'create_folder',
-                    'path' => '/',
-                    'value' => 'test folder'
+                    'path' => $this->bucket,
+                    'value' => $this->folder
                 ]
             ]
         ], [
@@ -55,4 +50,6 @@ class ActionTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+
 }

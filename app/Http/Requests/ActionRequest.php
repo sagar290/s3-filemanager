@@ -25,10 +25,10 @@ class ActionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'action' => 'required',
-            'action.*.name' => 'required|in:'. implode(',', ActionEnum::values()),
-            'action.*.path' => 'required',
-            'action.*.value' => 'required',
+            'actions' => 'required|array|min:1',
+            'actions.*.name' => 'required|in:'. implode(',', ActionEnum::values()),
+            'actions.*.path' => 'required',
+            'actions.*.value' => 'required',
         ];
     }
 }

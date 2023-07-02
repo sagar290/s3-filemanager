@@ -8,16 +8,18 @@ use Tests\TestCase;
 
 class S3ServiceTest extends TestCase
 {
-    public $bucket = 'bornon';
-    public $folder = 'testFolder/';
-
+    public function __construct()
+    {
+        $this->folder = str_replace('/', '', $this->folder) . "Unit/";
+        parent::__construct();
+    }
     public function test_create_folder()
     {
 
         $createFolder = (new S3Service())->createFolder($this->bucket, $this->folder);
 
         $this->assertEquals(
-            "https://bornon.s3.ap-south-1.amazonaws.com/testFolder/",
+            "https://bornon.s3.ap-south-1.amazonaws.com/{$this->folder}",
             $createFolder
         );
     }
