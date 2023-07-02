@@ -25,7 +25,7 @@ Route::group([
     Route::get('/buckets/{path}', [S3Controller::class, 'bucketContent'])->where('path', '.*');
 
 
-    Route::post('/actions', [ActionController::class, 'makeAction']);
+    Route::post('/actions/bulkRun', [ActionController::class, 'runActions']);
 
 });
 

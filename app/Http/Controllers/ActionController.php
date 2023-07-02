@@ -14,7 +14,7 @@ class ActionController extends Controller
     {
 
     }
-    public function makeAction(ActionRequest $request): AnonymousResourceCollection
+    public function runActions(ActionRequest $request): AnonymousResourceCollection
     {
         return ActionResourceCollection::collection($this->service->runActions($request));
     }
