@@ -16,11 +16,13 @@ class ActionService
     public function runActions(ActionRequest $request)
     {
         $actions = $request->get('actions');
+        $response = [];
 
         foreach ($actions as $action) {
-            $this->runAction($action);
+            $response[] =  $this->runAction($action);
         }
 
+        return $response;
     }
 
     public function runAction(array $action)
