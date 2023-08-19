@@ -241,6 +241,7 @@ __webpack_require__.r(__webpack_exports__);
 var map = {
 	"./home.vue": [
 		"./resources/js/pages/home.vue",
+		"/js/vendor",
 		"resources_js_pages_home_vue"
 	]
 };
@@ -254,7 +255,7 @@ function webpackAsyncContext(req) {
 	}
 
 	var ids = map[req], id = ids[0];
-	return __webpack_require__.e(ids[1]).then(() => {
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(() => {
 		return __webpack_require__(id);
 	});
 }
