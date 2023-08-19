@@ -32,7 +32,7 @@
                     <div class="flex justify-center">
                         <img :src="`${appUrl}/images/jpeg.png`" :alt="`${appUrl}/images/jpeg.png`">
                     </div>
-                    <div class="card-content">
+                    <div class="card-content text-left">
                         Lorem ipsum dolor sit,<br>
                         Lorem ipsum dolor sit amet
                     </div>
