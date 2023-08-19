@@ -1,5 +1,5 @@
 <template>
-    <div class="py-3 text-gray-500 pt-[65px] ">
+    <div class="py-3 text-gray-500 pt-[65px] h-full">
         <!-- myDriveHeading -->
         <!-- card -->
         <div class="drop-area"

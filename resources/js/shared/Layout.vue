@@ -4,7 +4,7 @@
         <title>S3 file manager</title>
     </Head>
 
-    <section class="fixed bg-white z-[1] w-[100%]">
+    <header class="fixed bg-white z-[1] w-[100%]">
         <div class="header flex p-[8px] sticky justify-between">
             <div class="flex items-center">
                 <div class="logo">
@@ -14,8 +14,8 @@
                     <h1>Drive</h1>
                 </div>
             </div>
-            <div class="search-bar flex w-[100rem] justify-between">
-                <form class="flex items-center w-[50%]">
+            <div class="search-bar flex w-full justify-between">
+                <form class="flex items-center w-[100%]">
                     <label for="voice-search" class="sr-only">Search</label>
                     <div class="relative w-full">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -32,7 +32,19 @@
                             </button>
                         </div>
                         <input type="text" id="voice-search"
-                               class="bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 bg-[#f1f3f4] outline-0"
+                               class="
+                                    text-lg
+                                    rounded-lg
+                                    focus:ring-blue-500
+                                    block
+                                    w-full
+                                    pl-10
+                                    p-2.5
+                                    bg-gray-100
+                                    dark:placeholder-gray-400
+                                    dark:text-white
+                                    bg-white:focus:ring-blue-500
+                                "
                                placeholder="Search in Drive" required>
 
                         <button type="button" class="absolute inset-y-0 right-0 flex items-center pr-3">
@@ -95,7 +107,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
 
     <section id="menu" class="flex">
@@ -106,67 +118,14 @@
         </div>
         <div class="nav-menu sidebar flex flex-wrap h-screen pt-[60px]">
       <span class="absolute text-white text-4xl top-5 left-4 cursor-pointer z-[1]">
-        <!-- <button class="fixed p-2 bg-black rounded-lg top-5 left-5" onclick="myFunction()">
-          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4
-             12h16M4 18h16" />
-          </svg>
-          <span class="sr-only">Open menu</span>
-        </button> -->
+
       </span>
             <div class=" bg-white rounded p-3 pl-0 menu-wrap">
-                <div class="flex justify-between">
-                    <div class="hidden flex items-center space-x-4 p-2 mb-5">
-                        <img class="h-12 rounded-full"
-                             src="http://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"
-                             alt="James Bhatta">
-                        <div>
-                            <h4 class="font-semibold text-lg text-gray-700 capitalize font-poppins tracking-wide">James
-                                Bhatta</h4>
-                            <span class="text-sm tracking-wide flex items-center space-x-1">
-                <svg class="h-4 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                     stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                </svg><span class="text-gray-600">Verified</span>
-              </span>
-                        </div>
-                    </div>
-
-                    <!-- button-new -->
-
-                    <div class="button-new">
-                        <button class="flex items-center">
-                            <div class="new pr-[10px]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
-                                    <path fill="#34A853" d="M16 16v14h4V20z"></path>
-                                    <path fill="#4285F4" d="M30 16H20l-4 4h14z"></path>
-                                    <path fill="#FBBC05" d="M6 16v4h10l4-4z"></path>
-                                    <path fill="#EA4335" d="M20 16V6h-4v14z"></path>
-                                    <path fill="none" d="M0 0h36v36H0z"></path>
-                                </svg>
-                            </div>
-                            New
-                        </button>
-                    </div>
-                    <button class="menu-button p-1 rounded-lg focus:outline-none focus:ring" id="close"
-                            onclick="close()">
-                        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                             viewBox="0 0 24 24"
-                             stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                        <span class="sr-only">Close sidebar</span>
-                    </button>
-                </div>
-                <!-- hidden-button -->
-
                 <Nav/>
             </div>
         </div>
 
-        <div class="bg-white hero-wrap">
+        <div class="bg-white hero-wrap relative h-screen" >
             <slot/>
         </div>
     </section>
