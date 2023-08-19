@@ -86,4 +86,59 @@ class ActionService
             "error_message" => []
         ]);
     }
+
+    public function deleteFolderAction($path, $value): ActionResource
+    {
+
+        // check if folder exists
+        $getFolder = $this->s3Service->getContentFolderByPath($path)['folders']
+            ->where(
+                'Prefix',
+                $value
+            )
+            ->first();
+
+        if (empty($getFolder)) {
+            return new ActionResource([
+                "name" => "delete_folder",
+                "path" => $path,
+                "value" => $value,
+                "status" => "error",
+                "error_message" => [
+                    "message" => "Folder not found"
+                ]
+            ]);
+        }
+
+        [$bucketName, $path] = separate_bucket_and_path_from_string($path);
+
+        $folderPath = $path . $value;
+
+        $url = $this->s3Service->deleteFolder(
+            bucketName: $bucketName,
+            folderNameWithPath: normalize_path(normalize_folder_path($folderPath))
+        );
+
+        if (!$url) {
+            return new ActionResource([
+                "name" => "delete_folder",
+                "path" => $path,
+                "value" => $value,
+                "status" => "error",
+                "error_message" => [
+                    "message" => "Can't delete folder"
+                ]
+            ]);
+        }
+
+        return new ActionResource([
+            "name" => "delete_folder",
+            "path" => $path,
+            "value" => $value,
+            "status" => "success",
+            "error_message" => []
+        ]);
+    }
+
+
 }
