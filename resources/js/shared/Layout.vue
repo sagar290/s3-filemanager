@@ -120,7 +120,7 @@
       <span class="absolute text-white text-4xl top-5 left-4 cursor-pointer z-[1]">
 
       </span>
-            <div class=" bg-white rounded p-3 pl-0 menu-wrap">
+            <div class=" bg-white rounded p-3 pl-0 menu-wrap border border-gray-80">
                 <Nav/>
             </div>
         </div>
