@@ -81,6 +81,17 @@ class S3Service
 
     }
 
+    public function editFolder($bucketName, $folderNameWithPath, $newFolderNameWithPath)
+    {
+
+        return $this->s3Client->copyObject([
+            'Bucket' => $bucketName,
+            'Key' => $newFolderNameWithPath,
+            'CopySource' => $bucketName . '/' . $folderNameWithPath,
+        ]);
+
+    }
+
     public function deleteFolder($bucketName, $folderNameWithPath)
     {
         return $this->s3Client->deleteObject([
