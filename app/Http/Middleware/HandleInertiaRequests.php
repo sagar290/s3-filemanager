@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Service\BucketService;
+use App\Service\S3Service;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
